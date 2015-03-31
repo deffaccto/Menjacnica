@@ -16,6 +16,10 @@ public class Valuta {
 	}
 
 	public void setNaziv(String naziv) {
+		if (naziv == null || naziv.equals(""))
+			throw new RuntimeException(
+					"Naziv valute ne sme biti prazan string ili null");
+
 		this.naziv = naziv;
 	}
 
@@ -24,6 +28,11 @@ public class Valuta {
 	}
 
 	public void setSkracenica(String skracenica) {
+		if (skracenica == null || skracenica.equals(""))
+			throw new RuntimeException(
+					"Skracenica valute ne sme biti prazan string ili null");
+
+		skracenica.toUpperCase();
 		this.skracenica = skracenica;
 	}
 
@@ -32,6 +41,8 @@ public class Valuta {
 	}
 
 	public void setProdajni(double prodajni) {
+		if (prodajni <= 0)
+			throw new RuntimeException("Kurs mora biti veci od 0");
 		this.prodajni = prodajni;
 	}
 
@@ -40,6 +51,8 @@ public class Valuta {
 	}
 
 	public void setKupovni(double kupovni) {
+		if (kupovni <= 0)
+			throw new RuntimeException("Kurs mora biti veci od 0");
 		this.kupovni = kupovni;
 	}
 
@@ -48,6 +61,8 @@ public class Valuta {
 	}
 
 	public void setSrednji(double srednji) {
+		if (srednji <= 0)
+			throw new RuntimeException("Kurs mora biti veci od 0");
 		this.srednji = srednji;
 	}
 
@@ -56,17 +71,18 @@ public class Valuta {
 	}
 
 	public void setDatum(GregorianCalendar datum) {
+		if(datum==null || datum.before(new GregorianCalendar()))
+			throw new RuntimeException("Datum unosenja kursa ne sme biti null ili pre danasnjeg datuma");
+		
 		this.datum = datum;
 	}
 
-	
 	public String toString() {
 		return "Naziv:" + naziv + ", Skracenica:" + skracenica
 				+ ", Prodajni kurs:" + prodajni + ", Srednji:" + srednji
 				+ "Kupovni kurs: " + kupovni + "Datum: " + datum;
 	}
 
-	
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
@@ -84,7 +100,6 @@ public class Valuta {
 		return result;
 	}
 
-	
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
