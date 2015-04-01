@@ -8,7 +8,9 @@ public interface ValutaInterfejs {
 			double prodajniKurs, double srednjiKurs, double kupovniKurs,
 			GregorianCalendar datum);
 
-	public void obrisiKurs(GregorianCalendar datum);
+	
+	public void obrisiKurs(String naziv, GregorianCalendar datum);
+	
+	public double nadjiKurs(String naziv, GregorianCalendar datum, int kurs);
 
-	public double nadjiKurs(GregorianCalendar datum);
 }
