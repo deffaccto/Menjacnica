@@ -4,9 +4,11 @@ import java.util.GregorianCalendar;
 
 public interface ValutaInterfejs {
 
-	public void dodavajKurs(GregorianCalendar datum);
-	
-	public void obrisiKurs(GregorianCalendar datum);
-	
-	public double nadjiKurs(GregorianCalendar datum);
+	public void dodavajKurs(String naziv, String skracenica,
+			double prodajniKurs, double srednjiKurs, double kupovniKurs,
+			GregorianCalendar datum);
+
+	public void obrisiKurs(String naziv, GregorianCalendar datum);
+
+	public double nadjiKurs(String naziv, GregorianCalendar datum, int kurs);
 }
